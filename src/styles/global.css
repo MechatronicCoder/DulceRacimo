@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+	color-scheme: light;
+	font-family:
+		"Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", sans-serif;
+	background: #fff8f4;
+	color: #1f1b16;
+}
+
+html {
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	scroll-padding-top: 88px;
+}
+
+html.is-grape-dragging {
+	scroll-behavior: auto;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background: #fff8f4;
+	-ms-overflow-style: none;
+}
+
+button,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+	font-family: "Libre Caslon Text", Georgia, serif;
+}
+
+.material-symbols-outlined {
+	font-family: "Material Symbols Outlined";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	font-feature-settings: "liga";
+	-webkit-font-feature-settings: "liga";
+	-webkit-font-smoothing: antialiased;
+	font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+.fill-icon {
+	font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+details > summary {
+	list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+	display: none;
+}
+
+.mobile-gallery-deck {
+	position: relative;
+	height: min(42vw, 210px);
+	margin-inline: auto;
+	width: min(50vw, 280px);
+	perspective: 900px;
+}
+
+.mobile-gallery-card {
+	position: absolute;
+	inset: 0;
+	border: 1px solid rgba(208, 194, 206, 0.72);
+	transition:
+		transform 280ms ease,
+						opacity 220ms ease,
+						box-shadow 220ms ease;
+}
+
+.mobile-gallery-card.is-active {
+	box-shadow: 0 22px 42px rgba(68, 22, 81, 0.22);
+}
+
+.mobile-gallery-card:not(.is-active) {
+	pointer-events: none;
+}
+
+::selection {
+	background: #5d2e69;
+	color: #d29add;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.grape-scroll {
+	--scroll-y: 0px;
+	position: fixed;
+	top: 96px;
+	right: 10px;
+	bottom: 96px;
+	z-index: 60;
+	width: 36px;
+	pointer-events: auto;
+}
+
+.grape-scroll__track {
+	position: absolute;
+	inset: 0 auto 0 50%;
+	width: 4px;
+	transform: translateX(-50%);
+	border-radius: 999px;
+	background:
+		linear-gradient(180deg, rgba(199, 239, 164, 0), rgba(199, 239, 164, 0.58), rgba(252, 215, 255, 0.7)),
+		linear-gradient(180deg, #eae1d9, #d0c2ce);
+	box-shadow:
+		0 0 0 1px rgba(68, 22, 81, 0.08),
+		0 8px 18px rgba(68, 22, 81, 0.12);
+}
+
+.grape-scroll__track::before,
+.grape-scroll__track::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	transform: translateX(-50%);
+	border-radius: 999px;
+	background: #441651;
+	box-shadow: 0 0 0 4px #fff8f4;
+}
+
+.grape-scroll__track::before {
+	top: -4px;
+}
+
+.grape-scroll__track::after {
+	bottom: -4px;
+	background: #7d4b89;
+}
+
+.grape-scroll__thumb {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	width: 32px;
+	height: 43px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #441651;
+	cursor: grab;
+	transform: translate(-50%, var(--scroll-y));
+	filter: drop-shadow(0 8px 12px rgba(68, 22, 81, 0.24));
+	touch-action: none;
+	transition: color 180ms ease, filter 180ms ease;
+}
+
+.grape-scroll__thumb:hover,
+.grape-scroll__thumb.is-dragging {
+	color: #5d2e69;
+	filter: drop-shadow(0 10px 16px rgba(68, 22, 81, 0.34));
+}
+
+.grape-scroll__thumb.is-dragging {
+	cursor: grabbing;
+}
+
+.grape-scroll__thumb svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+@media (max-width: 767px) {
+	.grape-scroll {
+		top: 88px;
+		right: 4px;
+		bottom: 88px;
+		width: 30px;
+	}
+
+	.grape-scroll__thumb {
+		width: 27px;
+		height: 37px;
+	}
+}

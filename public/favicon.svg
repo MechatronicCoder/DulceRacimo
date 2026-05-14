@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Dulce Racimo">
+	<rect width="128" height="128" rx="28" fill="#fff8f4"/>
+	<path d="M58 23c4-12 15-16 32-14-7 6-10 12-9 18 8-3 17-1 25 6-9 5-16 11-21 18-12-1-22-8-27-18" fill="none" stroke="#47672c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+	<path d="M31 31c18 0 28 10 31 32" fill="none" stroke="#47672c" stroke-width="10" stroke-linecap="round"/>
+	<g fill="#7d4b89" stroke="#441651" stroke-width="6">
+		<circle cx="38" cy="56" r="15"/>
+		<circle cx="64" cy="56" r="15"/>
+		<circle cx="90" cy="56" r="15"/>
+		<circle cx="25" cy="79" r="15"/>
+		<circle cx="51" cy="79" r="15"/>
+		<circle cx="77" cy="79" r="15"/>
+		<circle cx="38" cy="102" r="15"/>
+		<circle cx="64" cy="102" r="15"/>
+	</g>
+</svg>

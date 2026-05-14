@@ -1,0 +1,636 @@
+---
+import "../styles/global.css";
+
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+const heroImage = withBase("images/racimo_hero.png");
+
+const galleryImages = [
+	{
+		src: withBase("images/jabon_uva1.png"),
+		alt: "Racimo de jabón Dulce Racimo en presentación vertical",
+		className: "md:col-start-4 md:row-span-2 md:row-start-1 md:h-full",
+	},
+	{
+		src: withBase("images/jabon_uva2.png"),
+		alt: "Detalle de presentación Dulce Racimo",
+		className: "md:col-start-3 md:row-start-1",
+	},
+	{
+		src: withBase("images/jabon_uva3.png"),
+		alt: "Primer plano de racimo de jabón morado",
+		className: "md:col-span-2 md:row-start-1",
+	},
+	{
+		src: withBase("images/jabon_uva4.png"),
+		alt: "Banner Dulce Racimo con racimo de jabón",
+		className: "md:col-start-1 md:row-start-2",
+	},
+	{
+		src: withBase("images/jabon_uva5.png"),
+		alt: "Racimo de uvas de jabón sostenido a mano",
+		className: "md:col-span-2 md:col-start-2 md:row-start-2",
+	},
+];
+
+const galleryLayoutOrder = [2, 1, 3, 4, 0];
+
+const navItems = [
+	{ label: "Beneficios", href: "#beneficios" },
+	{ label: "Galería", href: "#galeria" },
+	{ label: "Nuestra Historia", href: "#historia" },
+];
+
+const heroHighlights = [
+	{
+		icon: "volunteer_activism",
+		title: "Hecho a mano",
+		text: "Cada racimo es único, hecho con dedicación.",
+	},
+	{
+		icon: "local_florist",
+		title: "Aroma delicioso",
+		text: "Fragancias que refrescan y enamoran.",
+	},
+	{
+		icon: "featured_seasonal_and_gifts",
+		title: "Ideal para regalar",
+		text: "Perfecto para detalles, eventos y ocasiones especiales.",
+	},
+	{
+		icon: "eco",
+		title: "Decorativo y útil",
+		text: "Embellece tus espacios mientras perfuma.",
+	},
+];
+
+const benefits = [
+	{
+		icon: "psychiatry",
+		title: "Ingredientes naturales",
+		text: "Fórmulas limpias y respetuosas con tu cuerpo y el medio ambiente.",
+	},
+	{
+		icon: "pan_tool",
+		title: "Hechos a mano",
+		text: "Cada jabón es una pieza única, moldeada y cuidada con calma artesanal.",
+	},
+	{
+		icon: "eco",
+		title: "Biodegradables",
+		text: "Comprometidos con productos que se integran a la naturaleza sin dañarla.",
+	},
+	{
+		icon: "air",
+		title: "Aroma exquisito",
+		text: "Fragancias cautivadoras que convierten el baño en un pequeño ritual de spa.",
+	},
+];
+
+const storyCards = [
+	{
+		icon: "target",
+		title: "Misión",
+		text: "Elaborar y comercializar jabones artesanales en forma de uva que combinen limpieza, creatividad y una experiencia sensorial agradable, con productos de alta calidad, diseños innovadores y presentaciones atractivas.",
+	},
+	{
+		icon: "visibility",
+		title: "Visión",
+		text: "Ser una empresa reconocida en el mercado de productos artesanales y cuidado personal por la creatividad, innovación y calidad de sus jabones, posicionándonos como una marca confiable y diferenciada.",
+	},
+	{
+		icon: "favorite",
+		title: "Valores",
+		text: "Creatividad, innovación, calidad, responsabilidad, compromiso y honestidad guían nuestro trabajo para ofrecer productos que satisfacen las expectativas de nuestros clientes.",
+	},
+];
+---
+
+<html lang="es" class="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={withBase("favicon.svg")} />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Dulce Racimo crea jabones artesanales en forma de uva, hechos a mano con aromas delicados, ingredientes naturales y una presentación ideal para regalar."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Dulce Racimo</title>
+	</head>
+	<body class="overflow-x-hidden bg-[#fff8f4] text-[#1f1b16] antialiased">
+		<header class="fixed inset-x-0 top-0 z-50 border-b border-white/30 bg-[#fff8f4]/58 backdrop-blur-md">
+			<nav class="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between px-5 md:px-16">
+				<a href={import.meta.env.BASE_URL} class="font-display flex items-center gap-2 text-2xl text-[#441651] md:text-[32px]">
+					<span class="material-symbols-outlined fill-icon text-[#441651]">spa</span>
+					Dulce Racimo
+				</a>
+
+				<div class="hidden items-center gap-8 md:flex">
+					{navItems.map((item) => (
+						<a href={item.href} class="text-sm font-semibold tracking-wide text-[#4d444d] transition-colors hover:text-[#441651]">
+							{item.label}
+						</a>
+					))}
+				</div>
+
+				<details class="relative md:hidden">
+					<summary class="grid size-11 cursor-pointer place-items-center rounded-full text-[#441651] transition hover:bg-[#f6ece5]">
+						<span class="material-symbols-outlined">menu</span>
+					</summary>
+					<div class="absolute right-0 top-14 grid min-w-56 gap-1 rounded-lg border border-[#eae1d9] bg-white p-3 shadow-xl">
+						{navItems.map((item) => (
+							<a href={item.href} class="rounded-md px-4 py-3 text-sm font-semibold text-[#4d444d] hover:bg-[#fcf2ea] hover:text-[#441651]">
+								{item.label}
+							</a>
+						))}
+					</div>
+				</details>
+			</nav>
+		</header>
+
+		<main>
+			<section class="relative isolate flex min-h-[860px] overflow-hidden bg-[#f7f0e6] pt-24 md:min-h-screen md:pt-28">
+				<img
+					src={heroImage}
+					alt="Dulce Racimo, racimos de uvas de jabón hechos a mano con amor"
+					class="absolute inset-0 -z-20 h-full w-full object-cover object-[64%_center] md:object-center"
+					fetchpriority="high"
+				/>
+				<div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#f7f0e6]/82 via-[#f7f0e6]/30 to-transparent md:from-transparent md:via-transparent"></div>
+
+				<div class="mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-between px-5 md:px-16">
+					<div class="max-w-[520px] pt-4 sm:pt-8 md:pt-12 lg:max-w-[560px]">
+						<h1 class="text-[clamp(4.5rem,11vw,8.9rem)] leading-[0.82] text-[#5a3371] drop-shadow-[0_1px_0_rgba(255,255,255,0.55)]">
+							Dulce<br />Racimo
+						</h1>
+						<div class="mt-5 h-px w-64 max-w-full bg-[#81845d]/55"></div>
+						<p class="mt-6 text-base font-bold uppercase tracking-[0.34em] text-[#777950] sm:text-lg md:text-xl">
+							<span class="text-[#5a3371]">•</span> Racimos de uvas de jabón <span class="text-[#5a3371]">•</span>
+						</p>
+						<p class="mt-5 max-w-md text-xl font-medium leading-8 text-[#4d444d] sm:text-2xl sm:leading-9">
+							Belleza que enamora, fragancia que se siente, detalles que permanecen.
+						</p>
+						<a
+							href="https://wa.me/"
+							target="_blank"
+							rel="noreferrer"
+							class="mt-7 inline-flex items-center gap-3 rounded-full bg-[#81845d] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-md transition hover:bg-[#6f724e]"
+						>
+							<span class="material-symbols-outlined text-[20px]">spa</span>
+							Hecho a mano
+							<span aria-hidden="true">•</span>
+							Con amor
+						</a>
+					</div>
+
+				</div>
+
+				<div class="absolute inset-x-0 bottom-0 z-10 bg-[#777950]/92 px-5 py-4 text-white backdrop-blur-sm md:px-16">
+					<div class="mx-auto grid max-w-[1280px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+						{heroHighlights.map((item, index) => (
+							<article class={`flex items-center gap-4 ${index > 0 ? "lg:border-l lg:border-white/35 lg:pl-8" : ""}`}>
+								<div class="grid size-14 shrink-0 place-items-center rounded-full bg-[#fff8f4] text-[#5a3371]">
+									<span class="material-symbols-outlined text-[28px]">{item.icon}</span>
+								</div>
+								<div>
+									<h2 class="font-sans text-sm font-bold uppercase tracking-[0.16em] text-white">{item.title}</h2>
+									<p class="mt-1 text-sm leading-5 text-white/86">{item.text}</p>
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="beneficios" class="bg-[#fcf2ea] px-5 py-20 md:px-16 md:py-28">
+				<div class="mx-auto max-w-[1280px]">
+					<div class="mx-auto mb-14 max-w-2xl text-center">
+						<h2 class="text-4xl leading-tight text-[#441651] md:text-5xl">Naturaleza que cuida tu piel</h2>
+						<p class="mt-5 text-lg leading-8 text-[#4d444d]">
+							Cada racimo es elaborado a mano con ingredientes seleccionados para nutrir y proteger tu piel.
+						</p>
+					</div>
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+						{benefits.map((item, index) => (
+							<article class={`rounded-lg border border-[#eae1d9] bg-[#fff8f4] p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md ${index % 2 ? "lg:translate-y-4" : ""}`}>
+								<div class="mx-auto grid size-16 place-items-center rounded-full bg-[#c7efa4] text-[#47672c]">
+									<span class="material-symbols-outlined text-3xl">{item.icon}</span>
+								</div>
+								<h3 class="mt-5 text-2xl leading-8 text-[#441651]">{item.title}</h3>
+								<p class="mt-4 text-base leading-7 text-[#4d444d]">{item.text}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="galeria" class="bg-[#fff8f4] px-5 py-20 md:px-16 md:py-28">
+				<div class="mx-auto max-w-[1280px]">
+					<div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+						<div class="max-w-2xl">
+							<h2 class="text-4xl leading-tight text-[#441651] md:text-5xl">Galería</h2>
+							<p class="mt-5 text-lg leading-8 text-[#4d444d]">
+								Un primer vistazo al producto, sus detalles y los momentos que luego completaremos con más fotos reales del proceso artesanal.
+							</p>
+						</div>
+					</div>
+
+					<div class="relative mx-auto md:hidden">
+						<div class="mobile-gallery-deck" data-mobile-gallery-deck>
+							{galleryImages.map((image, index) => (
+								<button
+									type="button"
+									class="mobile-gallery-card overflow-hidden rounded-lg bg-[#f6ece5] shadow-xl"
+									data-mobile-gallery-card
+									data-gallery-index={index}
+									aria-label={`Abrir imagen ${index + 1} de la galería`}
+								>
+									<img
+										src={image.src}
+										alt={image.alt}
+										class="h-full w-full object-cover"
+									/>
+								</button>
+							))}
+						</div>
+						<button
+							type="button"
+							class="absolute left-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-[#441651] text-white shadow-lg"
+							data-mobile-gallery-prev
+							aria-label="Imagen anterior"
+						>
+							<span class="material-symbols-outlined text-[21px]">chevron_left</span>
+						</button>
+						<button
+							type="button"
+							class="absolute right-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-[#441651] text-white shadow-lg"
+							data-mobile-gallery-next
+							aria-label="Imagen siguiente"
+						>
+							<span class="material-symbols-outlined text-[21px]">chevron_right</span>
+						</button>
+					</div>
+
+					<div class="hidden grid-cols-1 gap-6 md:grid md:grid-cols-[1.2fr_1.1fr_0.5fr_1fr] md:grid-rows-2">
+						{galleryLayoutOrder.map((imageIndex) => {
+							const image = galleryImages[imageIndex];
+							return (
+								<article class={`group relative h-64 overflow-hidden rounded-lg bg-[#f6ece5] shadow-sm ${image.className}`}>
+									<button
+										type="button"
+										class="h-full w-full cursor-zoom-in"
+										data-gallery-index={imageIndex}
+										aria-label={`Abrir imagen ${imageIndex + 1} de la galería`}
+									>
+										<img
+											src={image.src}
+											alt={image.alt}
+											class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+										/>
+									</button>
+								</article>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+
+			<section id="historia" class="bg-[#fcf2ea] px-5 py-20 md:px-16 md:py-28">
+				<div class="mx-auto max-w-[1280px]">
+					<div class="mx-auto mb-14 max-w-3xl text-center">
+						<span class="text-sm font-semibold uppercase tracking-[0.2em] text-[#47672c]">Nuestra esencia</span>
+						<h2 class="mt-4 text-4xl leading-tight text-[#441651] md:text-5xl">El propósito detrás de cada racimo</h2>
+						<p class="mt-6 text-lg leading-8 text-[#4d444d]">
+							Desarrollamos jabones en barra con forma de uva, innovadores y de calidad, para satisfacer necesidades de higiene personal y posicionar la marca dentro del mercado de productos artesanales. Buscamos elaborar un producto creativo, identificar su aceptación en el mercado, establecer un precio competitivo y promocionarlo mediante redes sociales y ferias.
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+						{storyCards.map((item, index) => (
+							<article class={`rounded-lg border border-[#eae1d9] bg-[#fff8f4] p-8 text-center shadow-sm ${index === 1 ? "md:-translate-y-6" : ""}`}>
+								<div class="mx-auto grid size-16 place-items-center rounded-full border-2 border-[#47672c] bg-[#fff8f4] text-[#47672c] shadow-sm">
+									<span class="material-symbols-outlined">{item.icon}</span>
+								</div>
+								<h3 class="mt-6 text-3xl text-[#441651]">{item.title}</h3>
+								<p class="mt-4 text-base leading-7 text-[#4d444d]">{item.text}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<div
+			class="fixed inset-0 z-[90] hidden items-center justify-center bg-[#1f1b16]/88 p-4 backdrop-blur-sm"
+			data-gallery-lightbox
+			data-gallery-items={JSON.stringify(galleryImages)}
+			aria-hidden="true"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Carrusel de imágenes de Dulce Racimo"
+		>
+			<button
+				type="button"
+				class="absolute right-4 top-4 grid size-11 place-items-center rounded-full bg-white text-[#441651] shadow-lg transition hover:scale-105"
+				data-gallery-close
+				aria-label="Cerrar galería"
+			>
+				<span class="material-symbols-outlined">close</span>
+			</button>
+
+			<button
+				type="button"
+				class="absolute left-4 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#441651] shadow-lg transition hover:scale-105"
+				data-gallery-prev
+				aria-label="Imagen anterior"
+			>
+				<span class="material-symbols-outlined">chevron_left</span>
+			</button>
+
+			<figure class="grid w-full max-w-6xl gap-4">
+				<img
+					src={galleryImages[0].src}
+					alt={galleryImages[0].alt}
+					class="mx-auto max-h-[78vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
+					data-gallery-lightbox-image
+				/>
+				<figcaption class="text-center text-sm font-semibold tracking-wide text-white/80" data-gallery-counter>
+					1 / {galleryImages.length}
+				</figcaption>
+			</figure>
+
+			<button
+				type="button"
+				class="absolute right-4 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#441651] shadow-lg transition hover:scale-105"
+				data-gallery-next
+				aria-label="Imagen siguiente"
+			>
+				<span class="material-symbols-outlined">chevron_right</span>
+			</button>
+		</div>
+
+		<footer class="bg-[#f6ece5] px-5 py-16 md:px-16 md:py-24">
+			<div class="mx-auto max-w-[1280px]">
+				<div class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-4">
+					<div class="md:col-span-2">
+						<a href={import.meta.env.BASE_URL} class="font-display flex items-center gap-2 text-3xl text-[#441651]">
+							<span class="material-symbols-outlined fill-icon">spa</span>
+							Dulce Racimo
+						</a>
+						<p class="mt-5 max-w-sm text-base leading-7 text-[#4d444d]">
+							Jabones artesanales que enamoran. Hechos a mano con ingredientes naturales para cuidar tu piel con la delicadeza que mereces.
+						</p>
+						<div class="mt-6 flex gap-4">
+							<a class="grid size-10 place-items-center rounded-full bg-[#eae1d9] text-[#441651] transition hover:bg-[#441651] hover:text-white" href="https://wa.me/" target="_blank" rel="noreferrer">
+								<span class="material-symbols-outlined text-[20px]">share</span>
+							</a>
+							<a class="grid size-10 place-items-center rounded-full bg-[#eae1d9] text-[#441651] transition hover:bg-[#441651] hover:text-white" href="mailto:ericahuaman5@gmail.com">
+								<span class="material-symbols-outlined text-[20px]">mail</span>
+							</a>
+						</div>
+					</div>
+					<div>
+						<h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#441651]">Explorar</h4>
+						<div class="grid gap-3">
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#beneficios">Beneficios</a>
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#galeria">Galería</a>
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#historia">Nuestra historia</a>
+						</div>
+					</div>
+					<div>
+						<h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#441651]">Legal</h4>
+						<div class="grid gap-3">
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#">Privacidad</a>
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#">Términos</a>
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="#">Envíos</a>
+							<a class="text-base text-[#4d444d] hover:text-[#441651]" href="mailto:ericahuaman5@gmail.com">Contacto</a>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col items-center justify-between gap-4 border-t border-[#eae1d9] pt-8 md:flex-row">
+					<p class="text-xs font-bold uppercase tracking-wide text-[#4d444d]">© 2026 Dulce Racimo. Jabones artesanales que enamoran.</p>
+					<div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#47672c]">
+						<span>Hecho con</span>
+						<span class="material-symbols-outlined fill-icon text-[16px] text-[#441651]">favorite</span>
+						<span>y naturaleza</span>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<div class="grape-scroll" data-grape-scroll aria-hidden="true">
+			<div class="grape-scroll__track"></div>
+			<button class="grape-scroll__thumb" data-grape-scroll-thumb type="button" tabindex="-1" aria-label="Desplazarse por la página">
+				<svg viewBox="0 0 64 86" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<path
+						d="M31.2 13.8C33.7 5.8 41 4.1 50.8 4.8C47.4 8.3 45.6 11.5 45.6 14.6C50.1 13.5 55.2 14.4 60 18.1C55.5 20.8 51.7 23.8 48.8 27.1C43.3 27 37.2 23.5 34.2 18.5"
+						stroke="currentColor"
+						stroke-width="6"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+					<path d="M13.4 19.8C24 19.8 29.7 26.1 31.8 38.8" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+					<circle cx="20" cy="36" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="34" cy="36" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="48" cy="36" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="13" cy="51" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="27" cy="51" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="41" cy="51" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="20" cy="66" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="34" cy="66" r="10" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+					<circle cx="27" cy="80" r="9" fill="#fff8f4" stroke="currentColor" stroke-width="6" />
+				</svg>
+			</button>
+		</div>
+
+		<a
+			class="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-[#25d366] text-white shadow-lg transition hover:scale-105"
+			href="https://wa.me/"
+			target="_blank"
+			rel="noreferrer"
+			aria-label="Contactar por WhatsApp"
+		>
+			<svg class="size-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path>
+			</svg>
+		</a>
+		<script is:inline>
+			const galleryLightbox = document.querySelector("[data-gallery-lightbox]");
+
+			if (galleryLightbox) {
+				const galleryItems = JSON.parse(galleryLightbox.dataset.galleryItems || "[]");
+				const galleryImage = galleryLightbox.querySelector("[data-gallery-lightbox-image]");
+				const galleryCounter = galleryLightbox.querySelector("[data-gallery-counter]");
+				const closeButton = galleryLightbox.querySelector("[data-gallery-close]");
+				const prevButton = galleryLightbox.querySelector("[data-gallery-prev]");
+				const nextButton = galleryLightbox.querySelector("[data-gallery-next]");
+				let currentGalleryIndex = 0;
+
+				const setGalleryImage = (index) => {
+					currentGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+					const item = galleryItems[currentGalleryIndex];
+					galleryImage.src = item.src;
+					galleryImage.alt = item.alt;
+					galleryCounter.textContent = `${currentGalleryIndex + 1} / ${galleryItems.length}`;
+				};
+
+				const openGallery = (index) => {
+					setGalleryImage(index);
+					galleryLightbox.classList.remove("hidden");
+					galleryLightbox.classList.add("flex");
+					galleryLightbox.setAttribute("aria-hidden", "false");
+					document.body.style.overflow = "hidden";
+					closeButton.focus();
+				};
+
+				const closeGallery = () => {
+					galleryLightbox.classList.add("hidden");
+					galleryLightbox.classList.remove("flex");
+					galleryLightbox.setAttribute("aria-hidden", "true");
+					document.body.style.overflow = "";
+				};
+
+				document.querySelectorAll("[data-gallery-index]").forEach((button) => {
+					button.addEventListener("click", () => openGallery(Number(button.dataset.galleryIndex)));
+				});
+
+				prevButton.addEventListener("click", () => setGalleryImage(currentGalleryIndex - 1));
+				nextButton.addEventListener("click", () => setGalleryImage(currentGalleryIndex + 1));
+				closeButton.addEventListener("click", closeGallery);
+
+				galleryLightbox.addEventListener("click", (event) => {
+					if (event.target === galleryLightbox) closeGallery();
+				});
+
+				window.addEventListener("keydown", (event) => {
+					if (galleryLightbox.classList.contains("hidden")) return;
+					if (event.key === "Escape") closeGallery();
+					if (event.key === "ArrowLeft") setGalleryImage(currentGalleryIndex - 1);
+					if (event.key === "ArrowRight") setGalleryImage(currentGalleryIndex + 1);
+				});
+			}
+		</script>
+		<script is:inline>
+			const mobileGalleryCards = Array.from(document.querySelectorAll("[data-mobile-gallery-card]"));
+			const mobileGalleryPrev = document.querySelector("[data-mobile-gallery-prev]");
+			const mobileGalleryNext = document.querySelector("[data-mobile-gallery-next]");
+
+			if (mobileGalleryCards.length && mobileGalleryPrev && mobileGalleryNext) {
+				let mobileGalleryIndex = 0;
+
+				const renderMobileGallery = () => {
+					mobileGalleryCards.forEach((card, index) => {
+						const distance = (index - mobileGalleryIndex + mobileGalleryCards.length) % mobileGalleryCards.length;
+						const visibleDistance = Math.min(distance, 3);
+						const isActive = distance === 0;
+
+						card.classList.toggle("is-active", isActive);
+						card.style.zIndex = String(mobileGalleryCards.length - visibleDistance);
+						card.style.opacity = distance > 3 ? "0" : String(1 - visibleDistance * 0.12);
+						card.style.transform = `translate(${visibleDistance * 9}px, ${visibleDistance * -12}px) scale(${1 - visibleDistance * 0.04})`;
+					});
+				};
+
+				mobileGalleryPrev.addEventListener("click", () => {
+					mobileGalleryIndex = (mobileGalleryIndex - 1 + mobileGalleryCards.length) % mobileGalleryCards.length;
+					renderMobileGallery();
+				});
+
+				mobileGalleryNext.addEventListener("click", () => {
+					mobileGalleryIndex = (mobileGalleryIndex + 1) % mobileGalleryCards.length;
+					renderMobileGallery();
+				});
+
+				renderMobileGallery();
+			}
+		</script>
+		<script is:inline>
+			const grapeScroll = document.querySelector("[data-grape-scroll]");
+			const grapeThumb = document.querySelector("[data-grape-scroll-thumb]");
+
+			if (grapeScroll && grapeThumb) {
+				const getMaxScroll = () => Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+				const getMaxTravel = () => Math.max(grapeScroll.clientHeight - grapeThumb.offsetHeight, 1);
+				const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+				let dragging = false;
+				let dragOffset = 0;
+				let frame = 0;
+
+				const renderThumb = (y) => {
+					grapeScroll.style.setProperty("--scroll-y", `${y}px`);
+				};
+
+				const syncThumbToPage = () => {
+					const progress = getMaxScroll() ? window.scrollY / getMaxScroll() : 0;
+					renderThumb(progress * getMaxTravel());
+					frame = 0;
+				};
+
+				const requestSync = () => {
+					if (frame) return;
+					frame = requestAnimationFrame(syncThumbToPage);
+				};
+
+				const scrollToThumbY = (rawY) => {
+					const y = clamp(rawY, 0, getMaxTravel());
+					const top = (y / getMaxTravel()) * getMaxScroll();
+					renderThumb(y);
+					document.documentElement.scrollTop = top;
+					document.body.scrollTop = top;
+				};
+
+				const scrollFromPointer = (clientY, offset = grapeThumb.offsetHeight / 2) => {
+					const rect = grapeScroll.getBoundingClientRect();
+					scrollToThumbY(clientY - rect.top - offset);
+				};
+
+				grapeThumb.addEventListener("pointerdown", (event) => {
+					dragging = true;
+					dragOffset = event.clientY - grapeThumb.getBoundingClientRect().top;
+					document.documentElement.classList.add("is-grape-dragging");
+					grapeThumb.classList.add("is-dragging");
+					grapeThumb.setPointerCapture(event.pointerId);
+					event.preventDefault();
+				});
+
+				grapeThumb.addEventListener("pointermove", (event) => {
+					if (dragging) scrollFromPointer(event.clientY, dragOffset);
+				});
+
+				const stopDragging = (event) => {
+					dragging = false;
+					dragOffset = 0;
+					document.documentElement.classList.remove("is-grape-dragging");
+					grapeThumb.classList.remove("is-dragging");
+					if (event?.pointerId && grapeThumb.hasPointerCapture(event.pointerId)) {
+						grapeThumb.releasePointerCapture(event.pointerId);
+					}
+					requestSync();
+				};
+
+				grapeThumb.addEventListener("pointerup", stopDragging);
+				grapeThumb.addEventListener("pointercancel", stopDragging);
+				grapeScroll.addEventListener("pointerdown", (event) => {
+					if (event.target === grapeThumb || grapeThumb.contains(event.target)) return;
+					scrollFromPointer(event.clientY);
+				});
+
+				window.addEventListener("scroll", requestSync, { passive: true });
+				window.addEventListener("resize", requestSync);
+				syncThumbToPage();
+			}
+		</script>
+	</body>
+</html>
